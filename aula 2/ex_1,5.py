@@ -16,6 +16,9 @@ r=(len(L)*Lxsum-Lsum*xsum)**2/((len(L)*L2sum-Lsum**2)*(len(L)*x2sum-xsum**2))
 mErr=np.abs(m)*np.sqrt(((1/r)-1)/(len(L)-2))
 bErr=mErr*(np.sqrt(L2sum/len(L)))
 
+fx = m*165+b
+print("f(165) = ",fx)
+
 print("m = ",m,"+-",mErr)
 print("b = ",b,"+-",bErr)
 print("r = ",r)
