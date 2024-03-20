@@ -23,8 +23,8 @@ def solverQueda(height):
 
 def solverA(height):    
     t,v,g =sympy.symbols("t v g") 
-    y=0.5*g*t**2
-    sol=sympy.nsolve((height-y).subs({v:6.8,g:9.8}),t,0)
+    y=0.5*9.8*t**2
+    sol=sympy.nsolve((height-y),t,0)
     print(sol)
 
 t,v,g =sympy.symbols("t v g")    
