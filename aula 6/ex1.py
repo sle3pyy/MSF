@@ -31,5 +31,11 @@ for i in range(np.size(t)-1):
 hmax=np.argmax(r[1,:])
 print("Tempo de altura maxima:",hmax," de altura:",r[1,hmax])    
 
+
+izero = np.size(r[1,:]) - np.size(r[1, r[1,:]<0]) # aqui usamos a "indexação condici
+tzero = t[izero]
+print("Tempo correspondente ao alcance máximo, tzero = ", tzero, "s")
+print("Alcance máximo da bola, xmax = ", r[0,izero], "m")
+
 plt.plot(r[0,:],r[1,:],"r-")
 plt.show()

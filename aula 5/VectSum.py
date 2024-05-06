@@ -45,3 +45,8 @@ pos= np.append(pos,[[x,y,theta]],0) #posição final
 print(pos)
 plt.plot(pos[:,0],pos[:,1])
 plt.show()
+
+x_f = x; y_f = y; theta_f = theta
+print("As coordenadas finais do robô são:")
+print(" r = ({0:.2f}, ".format(x_f), "{0:.2f})".format(y_f))
+print(" ang = {0:.2f}".format(theta_f))

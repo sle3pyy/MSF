@@ -1,12 +1,15 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
-a= np.array([2,3,-2])
-b= np.array([-1.5,-1,2])
+a = np.array([2.0, 3.0, -2.0])
+b = np.array([-1.5, -1.0, 2.0])
 
-print("o produto vetorial de a e b é:", np.cross(a,b))
+print("O produto vetorial (a x b) é:")
 
-#cos(theta)= a.b/(|a||b|)
+print(np.cross(a,b))
 
-aNorm= np.linalg.norm(a)
-bNorma= np.linalg.norm(b)
+# cos(θ) = a.b / (ab)
+a_norm = np.linalg.norm(a)
+b_norm = np.linalg.norm(b)
+theta = np.arccos(np.inner(a,b) / (a_norm * b_norm))
+
+print('O ângulo entre os vetores "a" e "b" é θ = {0:.2f}°'.format(theta * 180 / np.pi))
