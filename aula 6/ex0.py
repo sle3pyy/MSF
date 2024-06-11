@@ -36,3 +36,13 @@ plt.plot(r[0,:], r[1,:], 'b-')
 plt.xlabel("Posição horizontal, r_x [m]")
 plt.ylabel("Posição vertical, r_y [m]")
 plt.show()
+
+tm = v[1,0] / g # tempo para atingir altura máxima
+ym = 0.0 + (v[1,0]) ** 2 / (2 * g) # altura máxima
+tsolo = 2 * v[1,0] / g # tempo para atingir alcance máximo
+xsolo = 2 * v[0,0] * v[1,0] / g # alcance máximo
+
+print("tm =", tm, "s")
+print("ym =", ym, "m")
+print("tsolo =", tsolo, "s")
+print("xsolo =", xsolo, "m")

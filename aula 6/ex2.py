@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 t0 = 0.0 # condição inicial, tempo [s]
 tf = 1.0 # limite do domínio, tempo final [s]
 dt = 0.01 # passo [s]
-r0 = np.array([0.0, 0.0, 23.8]) # condição inicial, velocidade inicial [m/s]
-v0 = np.array([25.0, 5.0, -50.0]) # condição inicial, velocidade inicial [m/s]
+r0 = np.array([1, 0.0, 0]) # condição inicial, velocidade inicial [m/s]
+v0 = np.array([25.0, 5.0,0]) # condição inicial, velocidade inicial [m/s]
 w = 390.0 # condição inicial, velocidade angular CONSTANTE [ra
 g = 9.8 # aceleração gravítica [m/s^2]
 v_T = 100.0 * 1000 / 3600 # velocidade terminal [m/s]
@@ -41,11 +41,12 @@ plt.xlabel("Posição horizontal, r_x [m]")
 plt.ylabel("Posição vertical, r_y [m]")
 plt.show()
 
+print(r[2,:])
+
 # indice e tempo para o qual a bola atinge a "linha de fundo", ie, instante de
 # tempo a partir do qual a coordenada x da bola se torna negativa.
-ixzero = np.size(r[0,:]) - np.size(r[0, r[0,:]<0]) # usar indexação condicional
-txzero = t[ixzero]
-print("Tempo correspondente ao cruzamento da linha de fundo, txzero =", txzero, "s")
+ixzero = np.argmin(np.abs(r[0,:]))
+#print("Tempo correspondente ao cruzamento da linha de fundo, txzero =", txzero, "s")
 print("Coordenadas da bola quando cruza a linha de fundo:")
 print(" x = ", r[0,ixzero], "m")
 print(" y = ", r[1,ixzero], "m")

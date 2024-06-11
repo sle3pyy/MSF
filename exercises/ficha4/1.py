@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 y0= 0
 x0= 0
 t0 = 0
-tf = 1
+tf = 2
 dt= 0.01
 v0 = 100/3.6
 ang = 10
@@ -33,5 +33,24 @@ for i in range(np.size(t)-1):
     v[i+1,0]=v[i,0]
     r[i+1,0]=r[i,0]+v[i,0]*dt
 
+print(r[1,1])
+
 plt.plot(r[:,0],r[:,1],"r-")
 plt.show()
+
+hmax = np.max(r[:,1])
+print("The maximum height is:",hmax)
+print("The time to reach the maximum height is:",t[np.argmax(r[:,1])])
+
+zero_indices = []
+
+for i in range(len(r[:,1])):
+    # If y is approximately 0, store the index
+    if np.isclose(r[i,1], 0, atol=0.04):
+        zero_indices.append(i)
+    # If we've found the second y=0, break the loop
+    if len(zero_indices) == 2:
+        break
+
+distance_x = r[zero_indices[1], 0] - r[zero_indices[0], 0]
+print("The distance traveled in the x-direction between the first and second y=0 is:", distance_x)

@@ -28,9 +28,11 @@ for i in range(np.size(t)-1):
     v[:,i+1]=v[:,i]+a[:,i]*dt
     r[:,i+1]=r[:,i]+v[:,i]*dt
 
-hmax=np.argmax(r[1,:])
-print("Tempo de altura maxima:",hmax," de altura:",r[1,hmax])    
-
+imax = np.argmax(r[1,:])
+tmax = t[imax]
+print("Tempo correspondente à altura máxima, tmax = ", tmax, "s")
+print("Altura máxima, ymax = ", r[1,imax], "m")
+ 
 
 izero = np.size(r[1,:]) - np.size(r[1, r[1,:]<0]) # aqui usamos a "indexação condici
 tzero = t[izero]

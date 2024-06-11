@@ -28,26 +28,27 @@ for i in range(np.size(t)-1):
     a[i,1]= -9.8 - D*np.linalg.norm(v[i,:])*v[i,1]
     a[i,0]= - D*np.linalg.norm(v[i,:])*v[i,0]
     
-    if v[i,1] < 100/3.6:
-        v[i+1,1]=v[i,1]+a[i,1]*dt
-        r[i+1,1]=r[i,1]+v[i,1]*dt
-    else :
-        v[i+1,1]=v[i,1]
-        r[i+1,1]=r[i,1]+v[i,1]*dt    
-    if v[i,0] < 100/3.6:
-        v[i+1,0]=v[i,0]+a[i,0]*dt
-        r[i+1,0]=r[i,0]+v[i,0]*dt
-    else :
-        v[i+1,0]=v[i,0]
-        r[i+1,0]=r[i,0]+v[i,0]*dt
+    v[i+1,1]=v[i,1]+a[i,1]*dt
+    r[i+1,1]=r[i,1]+v[i,1]*dt
 
+    v[i+1,0]=v[i,0]+a[i,0]*dt
+    r[i+1,0]=r[i,0]+v[i,0]*dt
 
 max_arg = np.argmax(r[:,1])
 print("The maximum height is:",r[max_arg,1])
 
-index = int((1/dt-1))
-d = r[index,0]
+zero_indices = []
 
-print ("The distance is:",d)
+for i in range(len(r[:,1])):
+    # If y is approximately 0, store the index
+    if np.isclose(r[i,1], 0, atol=0.04):
+        zero_indices.append(i)
+    # If we've found the second y=0, break the loop
+    if len(zero_indices) == 2:
+        break
+
+distance_x = r[zero_indices[1], 0] - r[zero_indices[0], 0]
+print("The distance traveled in the x-direction between the first and second y=0 is:", distance_x)
+
 plt.plot(r[:,0],r[:,1],"r-")
 plt.show()
