@@ -46,6 +46,7 @@ def a_res(t, x, v):
     b = 0.01 # constante de amortecimento [kg/s]
     F_0 = 5.0 # amplitude da força externa [N]
     ω_f = 0.6 # frequencia angular da força externa [rad/s]
+    
     return - (k * x + 4 * α * x ** 3 + b * v - F_0 * np.cos(ω_f * t)) / m
 
 
